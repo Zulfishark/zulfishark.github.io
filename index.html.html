@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Julfikar Sarker Hasan — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FAF8F3;
+    --ink: #1B2430;
+    --ink-soft: #4B5563;
+    --rule: #D8D3C7;
+    --accent: #3E6F5C;
+    --accent-soft: #E7EFEA;
+    --tag-bg: #F0EEE6;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14181D;
+      --ink: #ECE9E1;
+      --ink-soft: #A7ADB6;
+      --rule: #2C333B;
+      --accent: #6FBE9E;
+      --accent-soft: #1E2B26;
+      --tag-bg: #1D2329;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14181D;
+    --ink: #ECE9E1;
+    --ink-soft: #A7ADB6;
+    --rule: #2C333B;
+    --accent: #6FBE9E;
+    --accent-soft: #1E2B26;
+    --tag-bg: #1D2329;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 64px 24px 100px;
+  }
+  header.hero {
+    margin-bottom: 56px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-soft);
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: clamp(34px, 6vw, 48px);
+    margin: 0 0 10px;
+    line-height: 1.12;
+    color: var(--ink);
+  }
+  .role-line {
+    font-size: 18px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+  .pitch {
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 58ch;
+  }
+  .contact-row {
+    margin-top: 26px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+  }
+  .contact-row a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+  }
+  .contact-row a:hover { border-color: var(--accent); color: var(--accent); }
+
+  section { margin-bottom: 52px; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 10px;
+    margin-bottom: 22px;
+  }
+  .section-head h2 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 21px;
+    margin: 0;
+  }
+  .section-count {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .entry:last-child { border-bottom: none; }
+  .entry-title {
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .entry-org {
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  .entry-period {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+    align-self: start;
+  }
+  .entry-desc {
+    grid-column: 1 / -1;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    max-width: 62ch;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 600px) {
+    .project-grid { grid-template-columns: 1fr; }
+    .entry { grid-template-columns: 1fr; }
+    .entry-period { margin-top: 2px; }
+  }
+  .project-card {
+    border: 1px solid var(--rule);
+    padding: 16px;
+    border-radius: 3px;
+  }
+  .project-name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .project-tech {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .project-desc {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+
+  .skill-group { margin-bottom: 16px; }
+  .skill-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-transform: lowercase;
+    margin-bottom: 8px;
+  }
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--ink);
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--rule);
+  }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="eyebrow">PORTFOLIO — JULFIKAR SARKER HASAN</div>
+    <h1>Business Analyst,<br>building toward Product.</h1>
+    <div class="role-line">Requirements → Dashboards → Decisions</div>
+    <p class="pitch">
+      I work where requirements documents, ledgers, and dashboards meet.
+      Currently a Business Analyst Intern turning stakeholder needs into
+      specs and self-serve Metabase dashboards, with an accounting
+      foundation underneath. Applying that same systems-and-numbers
+      thinking to product work.
+    </p>
+    <div class="contact-row">
+      <a href="mailto:Julfikar.sarker@gmail.com">Julfikar.sarker@gmail.com</a>
+      <a href="tel:01763655439">01763655439</a>
+      <span>Hazaribagh, Dhaka</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="section-count">03</span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">Business Analyst Intern <span class="entry-org">— BlankFrame.tech</span></div>
+      <div class="entry-period">May 2026 — Present</div>
+      <div class="entry-desc">
+        Gather requirements, translate them into specs, and build self-serve
+        Metabase dashboards. Automate recurring reporting with Claude Code
+        and agentic workflows, cutting turnaround from days to hours.
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">Partner <span class="entry-org">— T Mongol (Caf&eacute;)</span></div>
+      <div class="entry-period">Since 2026</div>
+      <div class="entry-desc">
+        Co-own and help run the business in partnership, contributing to
+        planning and day-to-day decisions.
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">Junior Accountant <span class="entry-org">— Vertex Paper and Boards Mills Ltd</span></div>
+      <div class="entry-period">Feb 2026 — Apr 2026</div>
+      <div class="entry-desc">
+        Recorded daily transactions and maintained accurate ledgers with
+        zero discrepancies. The same discipline now shapes how I handle
+        data-driven BA work.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="section-count">06</span>
+    </div>
+    <div class="project-grid">
+      <div class="project-card">
+        <div class="project-name">Attendance Management System</div>
+        <div class="project-tech">Flutter — Final Year Project, Team Lead</div>
+        <div class="project-desc">Led a team to build a system that tracks and reports attendance data.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-name">Library Management System</div>
+        <div class="project-tech">C — Team Lead</div>
+        <div class="project-desc">Directed development to manage book records and lending workflows.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-name">Basic E-Commerce Website</div>
+        <div class="project-tech">HTML, CSS, JavaScript</div>
+        <div class="project-desc">A simple online store interface with product listings and cart functionality.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-name">To-Do List App</div>
+        <div class="project-tech">HTML, CSS, JavaScript</div>
+        <div class="project-desc">A task manager with add, complete, and delete functionality.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-name">Tic-Tac-Toe Game</div>
+        <div class="project-tech">Java</div>
+        <div class="project-desc">A two-player game with win-condition logic.</div>
+      </div>
+      <div class="project-card">
+        <div class="project-name">Quiz Application</div>
+        <div class="project-tech">Python</div>
+        <div class="project-desc">A multiple-choice quiz app with score tracking.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Skills</h2>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">business analysis</div>
+      <div class="tag-row">
+        <span class="tag">Requirements gathering</span>
+        <span class="tag">Process documentation</span>
+        <span class="tag">User stories</span>
+        <span class="tag">Stakeholder coordination</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">bi &amp; reporting</div>
+      <div class="tag-row">
+        <span class="tag">Metabase</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Excel</span>
+        <span class="tag">Financial documentation</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">automation</div>
+      <div class="tag-row">
+        <span class="tag">Claude Code</span>
+        <span class="tag">Agentic workflows</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">project &amp; task management</div>
+      <div class="tag-row">
+        <span class="tag">Trello</span>
+        <span class="tag">Jira (working knowledge)</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-label">technical</div>
+      <div class="tag-row">
+        <span class="tag">C</span>
+        <span class="tag">Java</span>
+        <span class="tag">Python</span>
+        <span class="tag">HTML / CSS / JS</span>
+        <span class="tag">Flutter</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Julfikar Sarker Hasan</span>
+    <span>Updated 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
